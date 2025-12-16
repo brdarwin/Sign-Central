@@ -10,25 +10,25 @@ class Course1TrailsScreen extends StatelessWidget {
     Trail(
       id: '01',
       title: 'Introdução à LIBRAS',
-      color: const Color(0xFF2563EB),
+      color: const Color.fromARGB(255, 170, 197, 255),
       imagePath: 'assets/png/trilha_01.png',
     ),
     Trail(
       id: '02',
       title: 'Comunicação Básica',
-      color: const Color.fromARGB(255, 199, 86, 0),
+      color: const Color.fromARGB(255, 40, 98, 223),
       imagePath: 'assets/png/trilha_02.png',
     ),
     Trail(
       id: '03',
       title: 'Vocabulário Essencial',
-      color: const Color(0xFFEF4444),
+      color: const Color.fromARGB(255, 20, 23, 182),
       imagePath: 'assets/png/trilha_03.png',
     ),
     Trail(
       id: '04',
       title: 'Conversação',
-      color: const Color(0xFF3B82F6),
+      color: const Color.fromARGB(255, 0, 45, 119),
       imagePath: 'assets/png/trilha_04.png',
     ),
   ];

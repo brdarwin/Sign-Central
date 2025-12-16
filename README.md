@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # teste
+=======
+# signcentral
+>>>>>>> b86550beafe84c9347949a9ebcc82192fa68d5e0
 
 A new Flutter project.
 

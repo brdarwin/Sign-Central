@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:signcentral/widgets/illustration_widget.dart';
-import 'package:signcentral/screens/course_screens/menu.dart';
 import 'package:signcentral/widgets/button.dart';
 
 // ==================== CORES ====================
@@ -81,11 +80,11 @@ class WelcomeScreen extends StatelessWidget {
 
             const SizedBox(height: 38),
 
-               Button(
+            Button(
               title: 'Continuar',
-             onPressed: () {
-                  Navigator.pushNamed(context, '/menu');
-                },
+              onPressed: () {
+                Navigator.pushNamed(context, '/menu');
+              },
             ),
             const SizedBox(height: 24),
           ],

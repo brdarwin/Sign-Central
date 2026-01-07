@@ -5,7 +5,6 @@ import 'package:signcentral/widgets/trail.dart';
 class Course1TrailsScreen extends StatelessWidget {
   const Course1TrailsScreen({super.key});
 
-  // Lista de trilhas
   static final List<Trail> _trails = [
     Trail(
       id: '01',
@@ -36,19 +35,12 @@ class Course1TrailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // Se quiser algo aqui, por exemplo:
-        //title: const Text('Trilhas do Curso \nde Introdução à Libras.'),
-        //centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-      ),
+      appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
           const SizedBox(height: 24),
 
-          // ==================== TÍTULO ====================
           const Text(
             'Trilhas do Curso de \nIntrodução à Libras.',
             textAlign: TextAlign.center,
@@ -62,7 +54,6 @@ class Course1TrailsScreen extends StatelessWidget {
 
           const SizedBox(height: 24),
 
-          // Lista de trilhas
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -75,12 +66,11 @@ class Course1TrailsScreen extends StatelessWidget {
                   trail: trail,
                   onTap: () {
                     Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => LoadTrailScreen(trail: trail),
-    ),
-  ); 
-
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => LoadTrailScreen(trail: trail),
+                      ),
+                    );
                   },
                 ),
               );

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:signcentral/widgets/button.dart';
-import 'package:url_launcher/url_launcher.dart'; // <--- novo
+import 'package:url_launcher/url_launcher.dart';
 
 class Lesson {
   final String id;
   final String title;
-  final String thumbnail; // caminho da imagem da capa
+  final String thumbnail;
   bool watched;
 
   Lesson({
@@ -52,7 +52,6 @@ class _Trail01LessonsScreenState extends State<Trail01LessonsScreen> {
     ),
   ];
 
-  // porcentagem de aulas concluídas
   double get _progress {
     final watchedCount = _lessons.where((l) => l.watched).length;
     return watchedCount / _lessons.length;
@@ -71,26 +70,18 @@ class _Trail01LessonsScreenState extends State<Trail01LessonsScreen> {
       'https://youtu.be/klfAggYnRrw?si=3hOVBB4WAWyrnW8Q',
     );
 
-    if (!await launchUrl(
-      url,
-      mode: LaunchMode.externalApplication,
-    )) {
-      // opcional: mostrar um snackbar de erro
+    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Não foi possível abrir o vídeo.'),
-        ),
+        const SnackBar(content: Text('Não foi possível abrir o vídeo.')),
       );
     }
   }
 
   Future<void> _onLessonTap(Lesson lesson, int index) async {
     if (lesson.id == '1') {
-      // Aula 01 abre o vídeo no YouTube
-      await _openLesson1Video(); // abre app/navegador YouTube [web:138][web:150]
-      _toggleWatched(lesson);    // marca como assistida (pode mudar essa lógica depois)
+      await _openLesson1Video();
+      _toggleWatched(lesson);
     } else {
-      // por enquanto, só alterna o estado das outras aulas
       _toggleWatched(lesson);
     }
   }
@@ -109,7 +100,6 @@ class _Trail01LessonsScreenState extends State<Trail01LessonsScreen> {
       ),
       body: Column(
         children: [
-          // Barra de progresso azul no topo
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: Column(
@@ -126,9 +116,9 @@ class _Trail01LessonsScreenState extends State<Trail01LessonsScreen> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: LinearProgressIndicator(
-                    value: _progress,                // 0.0 a 1.0
+                    value: _progress,
                     minHeight: 8,
-                    color: const Color(0xFF2563EB), // azul
+                    color: const Color(0xFF2563EB),
                     backgroundColor: const Color(0xFFE5E7EB),
                   ),
                 ),
@@ -138,7 +128,6 @@ class _Trail01LessonsScreenState extends State<Trail01LessonsScreen> {
 
           const SizedBox(height: 8),
 
-          // Lista de "vídeos" de aula estilo Netflix
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -164,7 +153,6 @@ class _Trail01LessonsScreenState extends State<Trail01LessonsScreen> {
                       ),
                       child: Row(
                         children: [
-                          // capa do "vídeo" com ícone de play por cima (estilo Netflix)
                           Stack(
                             alignment: Alignment.center,
                             children: [
@@ -198,7 +186,6 @@ class _Trail01LessonsScreenState extends State<Trail01LessonsScreen> {
 
                           const SizedBox(width: 12),
 
-                          // título e status
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -228,7 +215,6 @@ class _Trail01LessonsScreenState extends State<Trail01LessonsScreen> {
 
                           const SizedBox(width: 8),
 
-                          // ícone de check se concluída
                           Icon(
                             lesson.watched
                                 ? Icons.check_circle_rounded
@@ -248,18 +234,16 @@ class _Trail01LessonsScreenState extends State<Trail01LessonsScreen> {
             ),
           ),
 
-          // Botão "Finalizar Trilha" bloqueado/enabled conforme progresso
           Padding(
-            padding:
-                const EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 4),
+            padding: const EdgeInsets.only(
+              left: 16,
+              right: 16,
+              bottom: 16,
+              top: 4,
+            ),
             child: Button(
               title: 'Finalizar Trilha',
-              onPressed: _allCompleted
-                  ? () {
-                      // usuário concluiu todas as aulas + atividades
-                      // aqui você pode salvar no backend, mostrar diálogo, etc.
-                    }
-                  : null, // desabilita enquanto não completar tudo
+              onPressed: _allCompleted ? () {} : null,
             ),
           ),
         ],

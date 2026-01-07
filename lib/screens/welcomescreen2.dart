@@ -35,59 +35,61 @@ class WelcomeScreen extends StatelessWidget {
       ),
 
       // ==================== CORPO ====================
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(height: 10),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(height: 10),
 
-            // ==================== ILUSTRAÇÃO (CENTRALIZADA) ====================
-            Center(
-              child: IllustrationWidget(
-                illustrationName: 'illustration_5',
-                height: MediaQuery.of(context).size.height * 0.42,
+              // ==================== ILUSTRAÇÃO (CENTRALIZADA) ====================
+              Center(
+                child: IllustrationWidget(
+                  illustrationName: 'illustration_5',
+                  height: MediaQuery.of(context).size.height * 0.42,
+                ),
               ),
-            ),
 
-            const SizedBox(height: 24),
+              const SizedBox(height: 24),
 
-            // ==================== TÍTULO ====================
-            const Text(
-              'Bem vindo(a) à\nsua jornada!',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.w700,
-                color: AppColors.textDark,
-                height: 1.2,
+              // ==================== TÍTULO ====================
+              const Text(
+                'Bem vindo(a) à\nsua jornada!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.textDark,
+                  height: 1.2,
+                ),
               ),
-            ),
 
-            const SizedBox(height: 8),
+              const SizedBox(height: 8),
 
-            // ==================== SUBTÍTULO ====================
-            const Text(
-              'Comunique-se sem barreiras.',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 23,
-                fontWeight: FontWeight.w400,
-                color: AppColors.textGray,
-                height: 1.3,
+              // ==================== SUBTÍTULO ====================
+              const Text(
+                'Comunique-se sem barreiras.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 23,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textGray,
+                  height: 1.3,
+                ),
               ),
-            ),
 
-            const SizedBox(height: 38),
+              const SizedBox(height: 38),
 
-            Button(
-              title: 'Continuar',
-              onPressed: () {
-                Navigator.pushNamed(context, '/menu');
-              },
-            ),
-            const SizedBox(height: 24),
-          ],
+              Button(
+                title: 'Continuar',
+                onPressed: () {
+                  Navigator.pushNamed(context, '/menu');
+                },
+              ),
+              const SizedBox(height: 24),
+            ],
+          ),
         ),
       ),
     );

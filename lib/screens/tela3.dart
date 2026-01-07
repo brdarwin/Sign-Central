@@ -10,32 +10,24 @@ class Tela3Stateful extends StatefulWidget {
 }
 
 class _Tela3StatefulState extends State<Tela3Stateful> {
-  // Chave global para identificar o Form e habilitar a validação
   final _formKey = GlobalKey<FormState>();
 
-  // Controller para acessar o valor do TextFormField
   final TextEditingController _usernameController = TextEditingController();
 
-  // Define o esquema de cores (mantido)
   final Color primaryColor = Colors.blue.shade700;
 
   @override
   void dispose() {
-    // É crucial descartar (dispose) os controllers para liberar memória
     _usernameController.dispose();
     super.dispose();
   }
 
   void _continueAction() {
-    // Tenta validar todos os campos do Form
     if (_formKey.currentState!.validate()) {
-      // Se a validação for bem-sucedida
       final username = _usernameController.text;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Nome de Usuário válido: $username')),
       );
-      // Aqui você navegaria para a próxima tela
-      // Navigator.push(context, MaterialPageRoute(builder: (context) => const ProximaTela()));
     }
   }
 
@@ -53,14 +45,11 @@ class _Tela3StatefulState extends State<Tela3Stateful> {
         actions: [
           IconButton(
             icon: const Icon(Icons.dark_mode_outlined, color: Colors.black),
-            onPressed: () {
-              // Lógica para alternar tema
-            },
+            onPressed: () {},
           ),
         ],
       ),
 
-      // Envolve o conteúdo principal em um Form com a chave
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
@@ -68,7 +57,6 @@ class _Tela3StatefulState extends State<Tela3Stateful> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              // 1. Ilustração (Reutilizada)
               const IllustrationWidget(
                 illustrationName: 'illustration_2',
                 height: 250,
@@ -76,7 +64,6 @@ class _Tela3StatefulState extends State<Tela3Stateful> {
 
               const SizedBox(height: 50),
 
-              // 2. Campo de Texto (Nome de Usuário)
               const Text(
                 'Nome de Usuário',
                 style: TextStyle(
@@ -88,7 +75,7 @@ class _Tela3StatefulState extends State<Tela3Stateful> {
               const SizedBox(height: 8),
 
               TextFormField(
-                controller: _usernameController, // Atribui o controller
+                controller: _usernameController,
                 decoration: InputDecoration(
                   hintText: 'username001',
                   hintStyle: const TextStyle(color: Colors.grey),
@@ -96,7 +83,7 @@ class _Tela3StatefulState extends State<Tela3Stateful> {
                     horizontal: 16,
                     vertical: 14,
                   ),
-                  // Estilos de borda mantidos
+
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     borderSide: const BorderSide(color: Colors.grey),
@@ -120,7 +107,6 @@ class _Tela3StatefulState extends State<Tela3Stateful> {
                 ),
                 keyboardType: TextInputType.text,
 
-                // Função de validação
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, insira um nome de usuário.';
@@ -128,16 +114,15 @@ class _Tela3StatefulState extends State<Tela3Stateful> {
                   if (value.length < 4) {
                     return 'O nome de usuário deve ter pelo menos 4 caracteres.';
                   }
-                  // Se for válido, retorna null
+
                   return null;
                 },
               ),
 
               const SizedBox(height: 30),
 
-              // 3. Botão "Continuar"
               ElevatedButton(
-                onPressed: _continueAction, // Chama a função de ação
+                onPressed: _continueAction,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryColor,
                   minimumSize: const Size(double.infinity, 56),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:signcentral/widgets/illustration_widget.dart';
-import 'package:signcentral/widgets/button.dart'; // garante o import do Button
-import 'package:signcentral/screens/cadastro_screen.dart';
+import 'package:signcentral/widgets/button.dart';
 
 class SignCentralScreen extends StatefulWidget {
   const SignCentralScreen({super.key});
@@ -41,12 +40,12 @@ class _SignCentralScreenState extends State<SignCentralScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Digite um e-mail válido.'),
+          backgroundColor: Color(0xFFFF0000),
         ),
       );
       return;
     }
 
-    // aqui você decide para onde ir depois do e‑mail válido
     Navigator.pushReplacementNamed(context, '/cad');
     // ou: Navigator.pushReplacementNamed(context, '/test');
   }
@@ -144,10 +143,7 @@ class _SignCentralScreenState extends State<SignCentralScreen> {
                 Expanded(child: Divider(color: Colors.grey)),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Text(
-                    'ou',
-                    style: TextStyle(color: Colors.grey),
-                  ),
+                  child: Text('ou', style: TextStyle(color: Colors.grey)),
                 ),
                 Expanded(child: Divider(color: Colors.grey)),
               ],
@@ -171,10 +167,7 @@ class _SignCentralScreenState extends State<SignCentralScreen> {
                 children: [
                   Text(
                     'Cadastrar com Google',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                 ],
               ),

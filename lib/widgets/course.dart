@@ -25,20 +25,16 @@ class CourseCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // bloco azul / imagem do curso
           ClipRRect(
             borderRadius: BorderRadius.circular(24),
             child: Container(
               width: 130,
               height: 120,
-              color: const Color(
-                0xFF2979FF,
-              ), // substitua por Image.asset se tiver arte
-              // child: Image.asset(course.imagePath, fit: BoxFit.cover),
+              color: const Color(0xFF2979FF),
             ),
           ),
           const SizedBox(width: 12),
-          // textos
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,9 +101,7 @@ class CourseCard extends StatelessWidget {
                         vertical: 8,
                       ),
                       decoration: BoxDecoration(
-                        color: const Color(
-                          0xFF003A1D,
-                        ), // Cor corrigida: Color(0xFF003A1D)
+                        color: const Color(0xFF003A1D),
                         borderRadius: BorderRadius.circular(999),
                       ),
                       child: const Text(

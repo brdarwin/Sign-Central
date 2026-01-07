@@ -52,7 +52,10 @@ class _CadastroScreenState extends State<CadastroScreen> {
       debugPrint('Senha: $password');
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Dados validados!')),
+        const SnackBar(
+          content: Text('Dados validados!'),
+          backgroundColor: Color(0xFF00FF08),
+        ),
       );
 
       // Próxima tela no fluxo: ajuste a rota se necessário
@@ -105,8 +108,10 @@ class _CadastroScreenState extends State<CadastroScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   ),
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 16.0,
+                    horizontal: 12.0,
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -130,8 +135,10 @@ class _CadastroScreenState extends State<CadastroScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   ),
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 16.0,
+                    horizontal: 12.0,
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -143,10 +150,7 @@ class _CadastroScreenState extends State<CadastroScreen> {
               const SizedBox(height: 8),
 
               // --- Campo Senha ---
-              Text(
-                'Senha',
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
+              Text('Senha', style: Theme.of(context).textTheme.bodyLarge),
               const SizedBox(height: 8.0),
               TextFormField(
                 controller: _passwordController,
@@ -183,10 +187,7 @@ class _CadastroScreenState extends State<CadastroScreen> {
               ),
               const SizedBox(height: 32.0),
 
-              Button(
-                title: 'Continuar',
-                onPressed: _onContinuePressed,
-              ),
+              Button(title: 'Continuar', onPressed: _onContinuePressed),
             ],
           ),
         ),

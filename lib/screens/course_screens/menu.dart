@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:signcentral/screens/course_screens/trilhas_curso_1.dart';
 
-/// ----------------- HEADER EM GRADIENTE -----------------
 class MenuHeader extends StatelessWidget {
   final String shortName;
 
@@ -52,7 +51,6 @@ class MenuHeader extends StatelessWidget {
   }
 }
 
-/// ----------------- CARD DO PROFESSOR -----------------
 class TeacherCard extends StatelessWidget {
   final String name;
   final String institution;
@@ -116,7 +114,6 @@ class TeacherCard extends StatelessWidget {
   }
 }
 
-/// ----------------- MODEL DO CURSO -----------------
 class Course {
   final String title;
   final double rating;
@@ -135,7 +132,6 @@ class Course {
   });
 }
 
-/// ----------------- CARD DO CURSO -----------------
 class CourseCard extends StatelessWidget {
   final Course course;
   final VoidCallback onTap;
@@ -245,8 +241,8 @@ class CourseCard extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: isEnrolled
-                            ? const Color(0xFF9CA3AF) // cinza matriculado
-                            : const Color(0xFF16C165), // verde matrícula
+                            ? const Color(0xFF9CA3AF)
+                            : const Color(0xFF16C165),
                         borderRadius: BorderRadius.circular(999),
                       ),
                       child: Text(
@@ -270,7 +266,6 @@ class CourseCard extends StatelessWidget {
   }
 }
 
-/// ----------------- BOTTOM NAV BAR -----------------
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
@@ -372,7 +367,6 @@ class _BottomNavItem extends StatelessWidget {
   }
 }
 
-/// ----------------- TELA DO MENU -----------------
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
 
@@ -499,9 +493,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                 _isCourse1Enrolled = true;
                               });
                             }
-                          } else {
-                            // ações para outros cursos, se quiser
-                          }
+                          } else {}
                         },
                       );
                     },

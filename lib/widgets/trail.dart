@@ -18,17 +18,14 @@ class TrailCard extends StatelessWidget {
   final Trail trail;
   final VoidCallback onTap;
 
-  const TrailCard({
-    super.key,
-    required this.trail,
-    required this.onTap,
-  });
+  const TrailCard({super.key, required this.trail, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        height: 200,
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(25),
         decoration: BoxDecoration(
@@ -61,7 +58,6 @@ class TrailCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                 
                 ],
               ),
             ),
@@ -69,10 +65,7 @@ class TrailCard extends StatelessWidget {
             SizedBox(
               height: 90,
               width: 90,
-              child: Image.asset(
-                trail.imagePath,
-                fit: BoxFit.cover,
-              ),
+              child: Image.asset(trail.imagePath, fit: BoxFit.cover),
             ),
           ],
         ),

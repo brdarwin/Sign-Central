@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TeacherCard extends StatelessWidget {
   final String name;
   final String institution;
-  final String imagePath; // caminho do asset
+  final String imagePath;
 
   const TeacherCard({
     super.key,
@@ -50,7 +50,6 @@ class TeacherCard extends StatelessWidget {
                 fontWeight: FontWeight.w600,
                 color: Color(0xFF2F3A4B),
                 fontFamily: 'Inter',
-
               ),
             ),
             const SizedBox(height: 2),
@@ -60,7 +59,6 @@ class TeacherCard extends StatelessWidget {
                 fontSize: 14,
                 color: Color(0xFF9CA3AF),
                 fontFamily: 'Inter',
-
               ),
             ),
           ],

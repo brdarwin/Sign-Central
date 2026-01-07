@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:signcentral/widgets/button.dart';
 
-// --- TELA SIGNCENTRAL (O WIDGET PRINCIPAL) ---
 class SignCentralScreen extends StatelessWidget {
   const SignCentralScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Definindo a cor principal azul, baseada na logo e botões
     const Color primaryBlue = Color(0xFF1E88E5);
 
     return Scaffold(
@@ -17,41 +15,29 @@ class SignCentralScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            // Ação de voltar (vazia no front-end puro)
-          },
+          onPressed: () {},
         ),
         actions: [
           IconButton(
-            // Ícone da lua no canto superior direito
             icon: const Icon(Icons.dark_mode_outlined, color: Colors.black),
-            onPressed: () {
-              // Ação do modo escuro (vazia no front-end puro)
-            },
+            onPressed: () {},
           ),
         ],
       ),
-      // Corpo da tela - centralizando o conteúdo com Padding
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
         child: Column(
-          // Alinhamento principal do conteúdo no centro da coluna
           mainAxisAlignment: MainAxisAlignment.center,
-          // Alinhamento horizontal para esticar o conteúdo
+
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            // 1. LOGO (USANDO A IMAGEM DE ASSET)
             Center(
-              child: Image.asset(
-                'assets/logo_sign_central.png', // Caminho do seu arquivo de imagem
-                height: 150, // Ajuste a altura conforme necessário
-                // Ajuste a largura ou deixe o BoxFit para o tamanho natural
-              ),
+              child: Image.asset('assets/logo_sign_central.png', height: 150),
             ),
 
             const SizedBox(height: 5),
 
-            // 2. MENSAGEM DE BOAS-VINDAS
             const Text(
               'Dê o primeiro passo na\n sua jornada em Libras',
               textAlign: TextAlign.center,
@@ -66,7 +52,6 @@ class SignCentralScreen extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            // 3. CAMPO DE EMAIL (TextField)
             const Text(
               'Email',
               style: TextStyle(
@@ -76,16 +61,16 @@ class SignCentralScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            // Input decorado
+
             TextFormField(
               decoration: InputDecoration(
                 hintText: 'user@gmail.com',
-                // Borda arredondada
+
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                   borderSide: const BorderSide(color: Colors.grey),
                 ),
-                // Borda quando focado
+
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                   borderSide: const BorderSide(color: primaryBlue, width: 2.0),
@@ -104,33 +89,28 @@ class SignCentralScreen extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            // 5. DIVISOR "ou"
             Row(
               children: const <Widget>[
-                // Linha à esquerda
                 Expanded(child: Divider(color: Colors.grey)),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text('ou', style: TextStyle(color: Colors.grey)),
                 ),
-                // Linha à direita
+
                 Expanded(child: Divider(color: Colors.grey)),
               ],
             ),
 
             const SizedBox(height: 24),
 
-            // 6. BOTÃO CADASTRAR COM GOOGLE (SEM ÍCONE, USANDO TEXTO)
             OutlinedButton(
-              onPressed: () {
-                // Ação de cadastro com Google (vazia no front-end puro)
-              },
+              onPressed: () {},
               style: OutlinedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 backgroundColor: Colors.white,
-                // A cor do texto dentro do botão
+
                 foregroundColor: Colors.black87,
-                // Borda cinza/clara
+
                 side: const BorderSide(color: Colors.black26, width: 1),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
@@ -139,7 +119,6 @@ class SignCentralScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  // Placeholder para o ícone do Google (removido para manter apenas o texto)
                   Text(
                     'Cadastrar com Google',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
@@ -150,7 +129,6 @@ class SignCentralScreen extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            // 7. TERMOS E POLÍTICA DE PRIVACIDADE
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text.rich(
@@ -173,7 +151,6 @@ class SignCentralScreen extends StatelessWidget {
 
             const SizedBox(height: 64),
 
-            // 8. LINK "JÁ TEM UMA CONTA? FAÇA LOGIN"
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -182,13 +159,11 @@ class SignCentralScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.black87, fontSize: 16),
                 ),
                 GestureDetector(
-                  onTap: () {
-                    // Ação de login (vazia no front-end puro)
-                  },
+                  onTap: () {},
                   child: Text(
                     'Faça Login',
                     style: TextStyle(
-                      color: primaryBlue, // Cor do link azul
+                      color: primaryBlue,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.underline,

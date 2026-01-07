@@ -13,7 +13,7 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const inactiveColor = Color(0xFF4B5563);
-    const activeColor = Color(0xFFFFA000); // laranja do home
+    const activeColor = Color(0xFFFFA000);
 
     return Container(
       height: 64,
@@ -95,11 +95,7 @@ class _BottomNavItem extends StatelessWidget {
       onTap: () => onTap(index),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        child: Icon(
-          icon,
-          color: color,
-          size: 26,
-        ),
+        child: Icon(icon, color: color, size: 26),
       ),
     );
   }

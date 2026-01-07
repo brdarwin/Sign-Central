@@ -5,13 +5,9 @@ const Color kDarkText = Color(0xFF1E1E1E);
 
 class Button extends StatelessWidget {
   final String title;
-  final VoidCallback? onPressed; // 🔥 <-- ADICIONADO
+  final VoidCallback? onPressed;
 
-  const Button({
-    super.key,
-    required this.title,
-    this.onPressed, // 🔥 <-- ADICIONADO
-  });
+  const Button({super.key, required this.title, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +15,7 @@ class Button extends StatelessWidget {
       width: double.infinity,
       height: 56,
       child: ElevatedButton(
-        onPressed: onPressed, // 🔥 <-- USANDO A FUNÇÃO RECEBIDA
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: kPrimaryBlue,
           shape: RoundedRectangleBorder(

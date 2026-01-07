@@ -29,11 +29,9 @@ class _TestScreenState extends State<TestScreen> {
 
     if (!mounted) return;
 
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const WelcomeScreen(),
-      ),
-    );
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (context) => const WelcomeScreen()));
   }
 
   @override
@@ -140,12 +138,9 @@ class _OptionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      // clique (touch ou mouse)
       onTap: onTap,
-      // hover (só web/desktop)
-      onHover: (hovering) {
-        // se quiser, pode tratar hover aqui com um callback extra
-      },
+
+      onHover: (hovering) {},
       borderRadius: BorderRadius.circular(12),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
@@ -166,14 +161,8 @@ class _OptionButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              text,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const Icon(
-              Icons.arrow_forward,
-              color: AppColors.primaryBlue,
-            ),
+            Text(text, style: Theme.of(context).textTheme.titleLarge),
+            const Icon(Icons.arrow_forward, color: AppColors.primaryBlue),
           ],
         ),
       ),

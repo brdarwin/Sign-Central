@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:signcentral/widgets/button.dart';
 
-// Definição das cores baseadas na imagem
 const Color kPrimaryBlue = Color(0xFF3F6FFF);
 const Color kDarkText = Color(0xFF1E1E1E);
 
@@ -18,12 +17,9 @@ class WelcomeScreenWithImages extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         actions: [
-          // Ícone de lua para modo noturno (simulação)
           IconButton(
             icon: const Icon(Icons.nights_stay_outlined, color: kDarkText),
-            onPressed: () {
-              // Ação para alternar tema
-            },
+            onPressed: () {},
           ),
           const SizedBox(width: 8),
         ],
@@ -34,33 +30,24 @@ class WelcomeScreenWithImages extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              // --- Logo (Substituído por Image.asset) ---
               Column(
                 children: [
-                  Image.asset(
-                    'assets/logo_sign_central.png', // Seu arquivo da logo
-                    height: 110, // Ajuste o tamanho conforme necessário
-                  ),
+                  Image.asset('assets/logo_sign_central.png', height: 110),
                   const SizedBox(height: 1),
                 ],
               ),
-              //const SizedBox(height: 10),
 
-              // --- Ilustração Principal (Substituído por Image.asset) ---
-              // Usamos um ClipRRect para garantir que a imagem tenha bordas arredondadas,
-              // simulando o layout da tela.
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
-                  'assets/illustration_main.png', // Seu arquivo de ilustração principal
+                  'assets/illustration_main.png',
                   width: size.width * 0.85,
-                  fit: BoxFit.cover, // Ajusta o tamanho da imagem
+                  fit: BoxFit.cover,
                 ),
               ),
 
               const SizedBox(height: 20),
 
-              // --- Texto de Chamada ---
               const Text(
                 'Aprenda Libras,\nna palma da sua mão.',
                 textAlign: TextAlign.center,
@@ -75,38 +62,10 @@ class WelcomeScreenWithImages extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // --- Botão Principal (Aprender agora) ---
-              /*
-              SizedBox(
-                width: double.infinity,
-                height: 56,
-                child: ElevatedButton(
-                  onPressed: () {
-                    debugPrint('Aprender agora pressionado');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: kPrimaryBlue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    elevation: 0,
-                  ),
-                  child: const Text(
-                    'Aprender agora',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              */
               Button(title: 'Aprender agora'),
 
               const SizedBox(height: 10),
 
-              // --- Opção de Login ---
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -132,7 +91,6 @@ class WelcomeScreenWithImages extends StatelessWidget {
                 ],
               ),
 
-              // Espaço para o "safe area" inferior
               const SizedBox(height: 1),
             ],
           ),

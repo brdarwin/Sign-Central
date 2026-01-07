@@ -5,8 +5,13 @@ import 'package:signcentral/screens/sign_central_screen.dart';
 import 'package:signcentral/screens/cadastro_screen.dart';
 import 'package:signcentral/screens/test_screen.dart';
 import 'package:signcentral/screens/welcome_screen_with_images.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const MyApp());
 }
 

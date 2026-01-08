@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:signcentral/widgets/illustration_widget.dart';
 import 'package:signcentral/widgets/button.dart';
 
+// OBS: O e-mail deveria ficar na mesma tela que os outros dados de input,
+// para facilitar na hora da autenticação. De qualquer forma, estou passando ele como argumento.
 class SignCentralScreen extends StatefulWidget {
   const SignCentralScreen({super.key});
 
@@ -34,22 +36,21 @@ class _SignCentralScreenState extends State<SignCentralScreen> {
     super.dispose();
   }
 
-  // ===== método que o Button vai chamar =====
   void _onContinuePressed() {
     if (!isValidEmail) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Digite um e-mail válido.'),
-          backgroundColor: Color(0xFFFF0000),
-        ),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Digite um e-mail válido.')));
       return;
     }
 
-    Navigator.pushReplacementNamed(context, '/cad');
-    // ou: Navigator.pushReplacementNamed(context, '/test');
+    Navigator.pushReplacementNamed(
+      context,
+      '/cad',
+      arguments: emailController
+          .text, //passando o e-mail para autenticação na outra tela.
+    );
   }
-  // ==========================================
 
   @override
   Widget build(BuildContext context) {
@@ -131,10 +132,7 @@ class _SignCentralScreenState extends State<SignCentralScreen> {
 
             const SizedBox(height: 16),
 
-            Button(
-              title: 'Continuar',
-              onPressed: _onContinuePressed, // agora esse método existe
-            ),
+            Button(title: 'Continuar', onPressed: _onContinuePressed),
 
             const SizedBox(height: 24),
 
@@ -206,7 +204,7 @@ class _SignCentralScreenState extends State<SignCentralScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, '/login');
+                    Navigator.pushReplacementNamed(context, '/sign_in');
                   },
                   child: const Text(
                     'Faça Login',

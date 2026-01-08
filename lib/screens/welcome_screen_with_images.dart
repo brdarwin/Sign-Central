@@ -86,7 +86,7 @@ class WelcomeScreenWithImages extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      debugPrint('Fazer Login pressionado');
+                      Navigator.pushReplacementNamed(context, '/sign_in');
                     },
                     child: const Text(
                       'Faça Login',

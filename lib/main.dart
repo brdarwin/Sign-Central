@@ -7,6 +7,7 @@ import 'package:signcentral/screens/test_screen.dart';
 import 'package:signcentral/screens/welcome_screen_with_images.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:signcentral/sign_in.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,11 +31,14 @@ class MyApp extends StatelessWidget {
 
         '/signcentral': (context) => const SignCentralScreen(),
 
+        '/sign_in': (context) => const SignIn(),
+
         '/cad': (context) => const CadastroScreen(),
 
         '/test': (context) => const TestScreen(),
 
         '/welcome': (context) => const WelcomeScreen(),
+
         '/menu': (context) => const MenuScreen(),
       },
     );

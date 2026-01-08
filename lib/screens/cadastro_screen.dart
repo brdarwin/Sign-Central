@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:signcentral/widgets/button.dart';
 import 'package:signcentral/widgets/illustration_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-// Função utilitária: pega apenas os dois primeiros nomes
 String getFirstTwoNames(String fullName) {
   final parts = fullName.trim().split(RegExp(r'\s+'));
   if (parts.isEmpty) return '';
@@ -18,15 +18,12 @@ class CadastroScreen extends StatefulWidget {
 }
 
 class _CadastroScreenState extends State<CadastroScreen> {
-  // Chave para o formulário
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  // Controladores para os campos de texto
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  // Estado para controlar a visibilidade da senha
   bool _isPasswordVisible = false;
 
   @override
@@ -37,13 +34,43 @@ class _CadastroScreenState extends State<CadastroScreen> {
     super.dispose();
   }
 
+  //Obs: encontrar um meio de coletar o restante dos dados após  a implementação do db
+  //Obs2: o método tem um try catch para tratamento de erros. Dessa alguns validators não são mais necessários.
+  Future<void> _signUpUser(
+    BuildContext context,
+    String email,
+    String password,
+  ) async {
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Conta Criad Com Sucesso.')));
+    } on FirebaseAuthException catch (e) {
+      String message = 'Um erro ocerreu.';
+      if (e.code == 'weak-password') {
+        message = 'Senha muit fraca, tente uma mais forte';
+      } else if (e.code == 'email-already-in-use') {
+        message = 'email já registrado';
+      }
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(message)));
+    } catch (e) {
+      print(e);
+    }
+  }
+
   void _onContinuePressed() {
     if (_formKey.currentState!.validate()) {
       final String fullName = _fullNameController.text;
       final String username = _usernameController.text;
       final String password = _passwordController.text;
 
-      // Nome abreviado (dois primeiros nomes) para usar na próxima tela
       final String shortName = getFirstTwoNames(fullName);
 
       debugPrint('Nome Completo: $fullName');
@@ -58,19 +85,14 @@ class _CadastroScreenState extends State<CadastroScreen> {
         ),
       );
 
-      // Próxima tela no fluxo: ajuste a rota se necessário
-      Navigator.pushReplacementNamed(
-        context,
-        '/test', // ou '/signcentral'
-        arguments: shortName, // passa "Evelly Maria", por exemplo
-      );
+      Navigator.pushReplacementNamed(context, '/test', arguments: shortName);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final String email = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
-      // AppBar com botão de voltar
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -88,14 +110,12 @@ class _CadastroScreenState extends State<CadastroScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Ilustração usando IllustrationWidget
               const IllustrationWidget(
                 illustrationName: 'illustration_2',
-                height: 500, // ajuste conforme necessário
+                height: 500,
               ),
               const SizedBox(height: 10.0),
 
-              // --- Campo Nome Completo ---
               Text(
                 'Nome Completo',
                 style: Theme.of(context).textTheme.bodyLarge,
@@ -122,7 +142,6 @@ class _CadastroScreenState extends State<CadastroScreen> {
               ),
               const SizedBox(height: 8.0),
 
-              // --- Campo Nome de Usuário ---
               Text(
                 'Nome de Usuário',
                 style: Theme.of(context).textTheme.bodyLarge,
@@ -187,7 +206,13 @@ class _CadastroScreenState extends State<CadastroScreen> {
               ),
               const SizedBox(height: 32.0),
 
-              Button(title: 'Continuar', onPressed: _onContinuePressed),
+              Button(
+                title: 'Continuar',
+                onPressed: () => {
+                  _signUpUser(context, email, _passwordController.text),
+                  _onContinuePressed(),
+                },
+              ),
             ],
           ),
         ),
